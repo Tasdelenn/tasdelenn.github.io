@@ -1,0 +1,199 @@
+/* Temel Stiller */
+:root {
+    --arkaplan: #ffffff;
+    --yazi-rengi: #333;
+    --vurgu-rengi: #007bff;
+    --kutu-arkaplan: rgba(0, 123, 255, 0.1);
+}
+
+body {
+    scroll-padding-top: 100px; /* Navigasyon çubuğu yüksekliği + 10px boşluk */
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--arkaplan);
+    color: var(--yazi-rengi);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+/* Koyu Tema */
+body.dark-mode {
+    --arkaplan: #1a1a1a;
+    --yazi-rengi: #f8f9fa;
+    --kutu-arkaplan: rgba(255, 255, 255, 0.1);
+}
+
+/* Başlık ve İletişim */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: var(--vurgu-rengi);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.iletisim {
+    background-color: var(--kutu-arkaplan);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.iletisim a {
+    color: var(--vurgu-rengi);
+    text-decoration: none;
+}
+
+/* Navigasyon Menüsü */
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    height: 60px;
+    z-index: 1000;
+    background-color: var(--arkaplan);
+    padding: 10px 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.nav-menu a {
+    padding: 10px 20px;
+    background-color: var(--vurgu-rengi);
+    color: white !important;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    background-color: #0056b3;
+}
+
+/* Hamburger Menü */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+}
+
+/* ISTQB Logosu */
+.sertifika-logo {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.sertifika-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Bölümler */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--kutu-arkaplan);
+    border-radius: 10px;
+}
+
+h2 {
+    color: var(--vurgu-rengi);
+    border-bottom: 2px solid var(--vurgu-rengi);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Deneyim ve Projeler */
+.deneyim-item, .proje-item {
+    margin-bottom: 25px;
+}
+
+.deneyim-item h3, .proje-item h3 {
+    color: var(--yazi-rengi);
+    margin-bottom: 10px;
+}
+
+/* Yetenek Grid */
+.yetenek-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.yetenek-kategori {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Tema Butonu */
+#tema-degis {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: var(--vurgu-rengi);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    body {
+        scroll-padding-top: 150px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--arkaplan);
+        transition: 0.3s;
+        padding: 20px 0;
+    }
+
+    .nav-menu.active {
+        top: 50px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-menu a {
+        width: 80%;
+        text-align: center;
+    }
+
+    .sertifika-logo {
+        width: 80px;
+        margin-top: 10px;
+    }
+}
