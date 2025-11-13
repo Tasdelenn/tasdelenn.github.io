@@ -190,27 +190,19 @@
             const langEnButton = document.getElementById("lang-en");
 
             function setLanguage(lang) {
-                // 'dark-mode' sınıfını koruyarak dil sınıflarını temizle
-                let currentClasses = document.body.className.split(' ');
-                let newClasses = currentClasses.filter(c => c !== 'lang-tr' && c !== 'lang-en');
-                newClasses.push('lang-' + lang);
-                document.body.className = newClasses.join(' ');
-
+                document.body.classList.remove('lang-tr', 'lang-en');
+                document.body.classList.add('lang-' + lang);
                 document.documentElement.lang = lang;
 
-                if (langTrButton && langEnButton) {
-                    langTrButton.classList.toggle('active', lang === 'tr');
-                    langEnButton.classList.toggle('active', lang === 'en');
-                }
+                langTrButton.classList.toggle('active', lang === 'tr');
+                langEnButton.classList.toggle('active', lang === 'en');
             }
 
-            if (langTrButton && langEnButton) {
-                // Varsayılan olarak 'tr' butonu aktif başlasın
-                langTrButton.classList.add('active');
+            langTrButton.addEventListener("click", () => setLanguage('tr'));
+            langEnButton.addEventListener("click", () => setLanguage('en'));
 
-                langTrButton.addEventListener("click", () => setLanguage('tr'));
-                langEnButton.addEventListener("click", () => setLanguage('en'));
-            }
+            // Sayfa yüklendiğinde varsayılan olarak Türkçe'yi ayarla
+            setLanguage('tr');
         });
     </script>
 </body>
