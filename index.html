@@ -176,29 +176,42 @@
 
     <!-- JavaScript -->
     <script>
-        // Tema Değiştirme
-        document.getElementById("tema-degis").addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tema Değiştirme
+            const themeToggle = document.getElementById("tema-degis");
+            if (themeToggle) {
+                themeToggle.addEventListener("click", () => {
+                    document.body.classList.toggle("dark-mode");
+                });
+            }
+
+            // Dil Değiştirme
+            const langTrButton = document.getElementById("lang-tr");
+            const langEnButton = document.getElementById("lang-en");
+
+            function setLanguage(lang) {
+                // 'dark-mode' sınıfını koruyarak dil sınıflarını temizle
+                let currentClasses = document.body.className.split(' ');
+                let newClasses = currentClasses.filter(c => c !== 'lang-tr' && c !== 'lang-en');
+                newClasses.push('lang-' + lang);
+                document.body.className = newClasses.join(' ');
+
+                document.documentElement.lang = lang;
+
+                if (langTrButton && langEnButton) {
+                    langTrButton.classList.toggle('active', lang === 'tr');
+                    langEnButton.classList.toggle('active', lang === 'en');
+                }
+            }
+
+            if (langTrButton && langEnButton) {
+                langTrButton.addEventListener("click", () => setLanguage('tr'));
+                langEnButton.addEventListener("click", () => setLanguage('en'));
+            }
+
+            // Sayfa yüklendiğinde varsayılan dil olarak Türkçe ayarla
+            setLanguage('tr');
         });
-
-        // Dil Değiştirme
-        const langTrButton = document.getElementById("lang-tr");
-        const langEnButton = document.getElementById("lang-en");
-
-        function setLanguage(lang) {
-            document.body.className = document.body.className.replace(/lang-(tr|en)/g, '');
-            document.body.classList.add('lang-' + lang);
-            document.documentElement.lang = lang;
-
-            langTrButton.classList.toggle('active', lang === 'tr');
-            langEnButton.classList.toggle('active', lang === 'en');
-        }
-
-        langTrButton.addEventListener("click", () => setLanguage('tr'));
-        langEnButton.addEventListener("click", () => setLanguage('en'));
-
-        // Sayfa yüklendiğinde varsayılan dil olarak Türkçe ayarla
-        setLanguage('tr');
     </script>
 </body>
 </html>
