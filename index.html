@@ -205,12 +205,12 @@
             }
 
             if (langTrButton && langEnButton) {
+                // Varsayılan olarak 'tr' butonu aktif başlasın
+                langTrButton.classList.add('active');
+
                 langTrButton.addEventListener("click", () => setLanguage('tr'));
                 langEnButton.addEventListener("click", () => setLanguage('en'));
             }
-
-            // Sayfa yüklendiğinde varsayılan dil olarak Türkçe ayarla
-            setLanguage('tr');
         });
     </script>
 </body>
