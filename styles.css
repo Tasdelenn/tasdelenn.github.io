@@ -225,24 +225,15 @@ ul {
 /* =================================
    Dil Metinlerini Gizleme/Gösterme
    ================================= */
-/* Varsayılan durum: Türkçe göster, İngilizce gizle. Site JS olmadan çalışır. */
-[lang="en"] {
-    display: none;
-}
+/* Varsayılan olarak her şey görünür. En kötü senaryo: JS çalışmazsa site çift dilli görünür. */
 
-/* JS ile dil değiştirildiğinde: İngilizce aktif (.lang-en) */
-body.lang-en [lang="tr"] {
-    display: none;
-}
-body.lang-en [lang="en"] {
-    display: inline;
-}
-
-/* JS ile dil değiştirildiğinde: Türkçe aktif (.lang-tr) */
-body.lang-tr [lang="tr"] {
-    display: inline;
-}
+/* Türkçe aktifken (.lang-tr), İngilizce'yi gizle */
 body.lang-tr [lang="en"] {
+    display: none;
+}
+
+/* İngilizce aktifken (.lang-en), Türkçe'yi gizle */
+body.lang-en [lang="tr"] {
     display: none;
 }
 
