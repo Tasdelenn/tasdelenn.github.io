@@ -8,7 +8,6 @@
     --kutu-arkaplan: #ffffff;
     --kutu-kenarlik: #e9ecef;
     --golge: 0 4px 12px rgba(0, 0, 0, 0.05);
-
     --font-ana: 'Segoe UI', 'Helvetica Neue', sans-serif;
 }
 
@@ -64,20 +63,14 @@ h1 {
     box-shadow: var(--golge);
 }
 
-.iletisim p {
-    margin: 8px 0;
-}
-
+.iletisim p { margin: 8px 0; }
 .iletisim a {
     color: var(--vurgu-rengi);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
-
-.iletisim a:hover {
-    color: var(--yazi-rengi);
-}
+.iletisim a:hover { color: var(--yazi-rengi); }
 
 /* =================================
    Navigasyon Menüsü
@@ -95,18 +88,19 @@ h1 {
     border-radius: 0 0 12px 12px;
     margin-bottom: 40px;
 }
-
 .nav-menu a {
     color: var(--yazi-rengi);
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid var(--kutu-kenarlik);
+    box-shadow: var(--golge);
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
-
 .nav-menu a:hover {
     background-color: var(--vurgu-rengi);
     color: white;
+    transform: translateY(-2px);
 }
 
 /* =================================
@@ -120,7 +114,6 @@ section {
     border: 1px solid var(--kutu-kenarlik);
     box-shadow: var(--golge);
 }
-
 h2 {
     color: var(--vurgu-rengi);
     font-size: 1.8em;
@@ -133,19 +126,13 @@ h2 {
 /* =================================
    Deneyim ve Projeler
    ================================= */
-.deneyim-item, .proje-item {
-    margin-bottom: 30px;
-}
-
+.deneyim-item, .proje-item { margin-bottom: 30px; }
 .deneyim-item h3, .proje-item h3 {
     color: var(--yazi-rengi);
     margin-bottom: 10px;
     font-weight: 600;
 }
-
-ul {
-    padding-left: 20px;
-}
+ul { padding-left: 20px; }
 
 /* =================================
    Yetenek Grid
@@ -155,7 +142,6 @@ ul {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
-
 .yetenek-kategori {
     background-color: var(--arkaplan);
     padding: 20px;
@@ -171,93 +157,60 @@ ul {
     transition: transform 0.3s;
     float: right;
 }
-
-.sertifika-logo:hover {
-    transform: scale(1.1);
-}
+.sertifika-logo:hover { transform: scale(1.1); }
 
 /* =================================
    Butonlar (Tema ve Dil)
    ================================= */
-#tema-degis, .language-switcher button {
+.fixed-controls {
     position: fixed;
     bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+#tema-degis, .language-switcher button {
     padding: 10px 15px;
     background-color: var(--kutu-arkaplan);
     color: var(--vurgu-rengi);
     border: 1px solid var(--kutu-kenarlik);
     border-radius: 25px;
     cursor: pointer;
-    z-index: 1001;
     box-shadow: var(--golge);
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
-
 #tema-degis:hover, .language-switcher button:hover {
     transform: translateY(-3px);
     background-color: var(--vurgu-rengi);
     color: white;
 }
-
-#tema-degis {
-    right: 20px;
-}
-
 .language-switcher {
-    position: fixed;
-    bottom: 20px;
-    right: 80px;
-    z-index: 1001;
     display: flex;
     gap: 5px;
 }
-
 .language-switcher button.active {
     background-color: var(--vurgu-rengi);
     color: white;
     font-weight: bold;
 }
-
-.language-switcher button:not(.active) {
-    opacity: 0.8;
-}
+.language-switcher button:not(.active) { opacity: 0.8; }
 
 /* =================================
-   Dil Metinlerini Gizleme/Gösterme
+   Dil Metinlerini Gizleme/Gösterme (Kesin Çözüm)
    ================================= */
-/* Varsayılan olarak her şey görünür. En kötü senaryo: JS çalışmazsa site çift dilli görünür. */
-
-/* Türkçe aktifken (.lang-tr), İngilizce'yi gizle */
-body.lang-tr [lang="en"] {
-    display: none;
-}
-
-/* İngilizce aktifken (.lang-en), Türkçe'yi gizle */
-body.lang-en [lang="tr"] {
-    display: none;
-}
-
+body.lang-tr [lang="en"] { display: none !important; }
+body.lang-tr [lang="tr"] { display: inline !important; }
+body.lang-en [lang="tr"] { display: none !important; }
+body.lang-en [lang="en"] { display: inline !important; }
 
 /* =================================
    Responsive Tasarım
    ================================= */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 2em;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .sertifika-logo {
-        float: none;
-        display: block;
-        margin: 0 auto 20px;
-    }
+    body { padding: 10px; }
+    h1 { font-size: 2em; }
+    .nav-menu { flex-direction: column; gap: 10px; }
+    .sertifika-logo { float: none; display: block; margin: 0 auto 20px; }
 }

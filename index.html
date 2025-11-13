@@ -10,13 +10,13 @@
     <link rel="icon" type="image/png" href="assets/images/istqbLogo.png">
 </head>
 <body>
-    <!-- Tema Değiştirme Butonu -->
-    <button id="tema-degis">🌓</button>
-
-    <!-- Dil Seçimi Butonları -->
-    <div class="language-switcher">
-        <button id="lang-tr" class="active">TR</button>
-        <button id="lang-en">EN</button>
+    <!-- Sabit Kontrol Butonları -->
+    <div class="fixed-controls">
+        <div class="language-switcher">
+            <button id="lang-tr">TR</button>
+            <button id="lang-en">EN</button>
+        </div>
+        <button id="tema-degis">🌓</button>
     </div>
 
     <!-- Başlık ve İletişim -->
@@ -37,7 +37,7 @@
         <a href="#egitim"><span lang="tr">Eğitim</span><span lang="en">Education</span></a>
         <a href="#yetenekler"><span lang="tr">Yetenekler</span><span lang="en">Skills</span></a>
         <a href="#projeler"><span lang="tr">Projeler</span><span lang="en">Projects</span></a>
-        <a href="#some-works"><span lang="tr">Bazı Projeler</span><span lang="en">Some Works</span></a>
+        <a href="#digital-works"><span lang="tr">Dijital Projeler</span><span lang="en">Digital Works</span></a>
         <a href="#kisisel"><span lang="tr">Kişisel</span><span lang="en">Personal</span></a>
     </nav>
 
@@ -56,7 +56,7 @@
             <ul>
                 <li><span lang="tr">Fonksiyonel ve yeniden kullanılabilir otomasyon çerçeveleri oluşturarak test süreçlerini optimize ettim.</span><span lang="en">Optimized testing processes by creating functional and reusable automation frameworks.</span></li>
                 <li><span lang="tr">API, UI ve veri tabanı testleriyle yazılım doğruluğunu ve güvenilirliğini sağladım.</span><span lang="en">Ensured software accuracy and reliability through API, UI, and database testing.</span></li>
-                <li><span lang="tr">Jenkins ve GitHub Actions ile CI/CD süreçlerine entegre test senaryoları geliştirdim.</span><span lang="en">Developed test scenarios integrated into CI/CD processes using Jenkins and GitHub Actions.</span></li>
+                <li><span lang="tr">Jenkins ve GitHub Actions ile CI/CD süreçlerine entigre test senaryoları geliştirdim.</span><span lang="en">Developed test scenarios integrated into CI/CD processes using Jenkins and GitHub Actions.</span></li>
                 <li><span lang="tr">Test senaryoları ve "test case" tasarımıyla uygulama kapsamını genişlettim.</span><span lang="en">Expanded application coverage through test scenario and test case design.</span></li>
                 <li><span lang="tr">Öğrenciler için gerçek iş hayatını simüle eden projeler geliştirdim ve takımları koordine ederek projelerin süreçlerini Agile metodolojisi ve Scrum seremonileri ile yönettim.</span><span lang="en">Developed projects simulating real-world work environments for students and coordinated teams, managing project processes with Agile methodology and Scrum ceremonies.</span></li>
                 <li><span lang="tr">Öğrencilere uygulamalı deneyim kazandırarak iş hayatına hazırlanmalarına katkı sağlamaya devam ediyorum.</span><span lang="en">Continuing to contribute to students' professional readiness by providing them with hands-on experience.</span></li>
@@ -156,10 +156,13 @@
         </div>
     </section>
 
-    <!-- Some Works -->
-    <section id="some-works">
-        <h2><span lang="tr">BAZI PROJELER</span><span lang="en">SOME WORKS</span></h2>
-        <p><span lang="tr">Yakında burada projelerimden bazı örnekler yer alacak.</span><span lang="en">Examples of my projects will be featured here soon.</span></p>
+    <!-- Digital Works -->
+    <section id="digital-works">
+        <h2><span lang="tr">DİJİTAL PROJELER</span><span lang="en">DIGITAL WORKS</span></h2>
+        <div class="proje-item">
+            <h3><a href="https://tasdelenn.github.io/kml_stylizer/" target="_blank"><span lang="tr">KML Stil Oluşturucu</span><span lang="en">KML Stylizer</span></a></h3>
+            <p><span lang="tr">Google Earth'te kullanılan KML dosyaları için renk ve stil kodları üreten basit bir web aracı.</span><span lang="en">A simple web tool that generates color and style codes for KML files used in Google Earth.</span></p>
+        </div>
     </section>
 
     <!-- Kişisel Bilgiler -->
@@ -190,10 +193,14 @@
             const langEnButton = document.getElementById("lang-en");
 
             function setLanguage(lang) {
-                document.body.classList.remove('lang-tr', 'lang-en');
-                document.body.classList.add('lang-' + lang);
+                if (lang === 'en') {
+                    document.body.classList.add('lang-en');
+                    document.body.classList.remove('lang-tr');
+                } else {
+                    document.body.classList.add('lang-tr');
+                    document.body.classList.remove('lang-en');
+                }
                 document.documentElement.lang = lang;
-
                 langTrButton.classList.toggle('active', lang === 'tr');
                 langEnButton.classList.toggle('active', lang === 'en');
             }
@@ -201,7 +208,7 @@
             langTrButton.addEventListener("click", () => setLanguage('tr'));
             langEnButton.addEventListener("click", () => setLanguage('en'));
 
-            // Sayfa yüklendiğinde varsayılan olarak Türkçe'yi ayarla
+            // Sayfa yüklendiğinde varsayılan dil olarak Türkçe'yi ayarla
             setLanguage('tr');
         });
     </script>
