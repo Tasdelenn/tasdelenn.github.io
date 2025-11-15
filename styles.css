@@ -198,12 +198,15 @@ ul { padding-left: 20px; }
 .language-switcher button:not(.active) { opacity: 0.8; }
 
 /* =================================
-   Dil Metinlerini Gizleme/Gösterme (Kesin Çözüm)
+   Dil Metinlerini Gizleme/Gösterme (İngilizce Varsayılan)
    ================================= */
+/* Varsayılan olarak (JS'siz) İngilizce göster, Türkçe'yi gizle */
+:not(body.lang-tr) [lang="tr"] { display: none !important; }
+:not(body.lang-tr) [lang="en"] { display: inline !important; }
+
+/* Türkçe aktifken (.lang-tr), İngilizce'yi gizle ve Türkçe'yi göster */
 body.lang-tr [lang="en"] { display: none !important; }
 body.lang-tr [lang="tr"] { display: inline !important; }
-body.lang-en [lang="tr"] { display: none !important; }
-body.lang-en [lang="en"] { display: inline !important; }
 
 /* =================================
    Responsive Tasarım
